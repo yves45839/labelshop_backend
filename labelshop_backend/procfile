@@ -1,0 +1,1 @@
+web: gunicorn labelshop_backend.wsgi --log-file -
