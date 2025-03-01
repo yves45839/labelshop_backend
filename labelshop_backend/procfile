@@ -1,1 +1,1 @@
-web: gunicorn labelshop_backend.wsgi --log-file -
+web: gunicorn labelshop_backend.wsgi:application --bind 0.0.0.0:$PORT
