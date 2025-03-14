@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-i!k3jzi@6*&luy^b_izz)ap-)@9c&k&wly-k-t7i!zl#!26c39'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["labelshop-backend.onrender.com", "127.0.0.1", "localhost"]
 CSRF_TRUSTED_ORIGINS = ["https://labelshop-backend.onrender.com"]
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'products',
 ]
 
@@ -51,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'labelshop_backend.urls'
@@ -133,3 +135,8 @@ CACHES = {
         'LOCATION': 'unique-labelshop-cache',
     }
 }
+
+CORS_ALLOWED_ORIGINS = [
+    "https://fontend",  # URL du frontend React sur Render
+    "http://localhost:3000",  # Pour le développement local
+]
