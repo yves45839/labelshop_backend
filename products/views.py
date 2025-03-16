@@ -69,20 +69,46 @@ def fetch_odoo_products(request):
 def search_products(request):
     query = request.GET.get('q', '')
 
-    if query:
-        products = Product.objects.filter(
-            Q(name__icontains=query) |
-            Q(description__icontains=query) |
-            Q(default_code__icontains=query) |
-            Q(barcode__icontains=query) |
-            Q(search_tags__icontains=query) |
-            Q(meta_title__icontains=query) |
-            Q(meta_description__icontains=query)
-        )
-    else:
-        products = Product.objects.all()
+    # Première tentative : Recherche exacte sur le slug
+    product = Product.objects.filter(slug=query).first()
 
-    return JsonResponse(list(products.values()), safe=False)
+    # Deuxième tentative : Recherche partielle si aucun résultat exact
+    if not product:
+        product = Product.objects.filter(slug__icontains=query).first()
+
+    # Si le produit existe, retourner les données, sinon tableau vide
+    if product:
+        return JsonResponse([{
+            "id": product.id,
+            "odoo_id": product.odoo_id,
+            "name": product.name,
+            "slug": product.slug,
+            "description": product.description,
+            "short_description": product.short_description,
+            "list_price": product.list_price,
+            "discount_price": product.discount_price,
+            "stock_quantity": product.stock_quantity,
+            "is_available": product.is_available,
+            "default_code": product.default_code,
+            "barcode": product.barcode,
+            "categ_id": product.categ_id,
+            "brand": product.brand,
+            "rating": product.rating,
+            "reviews_count": product.reviews_count,
+            "image_url": product.image_url,
+            "image_1920": product.image_1920,
+            "image_1024": product.image_1024,
+            "image_512": product.image_512,
+            "image_256": product.image_256,
+            "meta_title": product.meta_title,
+            "meta_description": product.meta_description,
+            "keywords": product.keywords,
+            "search_tags": product.search_tags,
+            "created_at": product.created_at,
+            "updated_at": product.updated_at,
+        }], safe=False)
+
+    return JsonResponse([], safe=False)
 
 
 # 🔹 3️⃣ Liste des produits stockés en base
