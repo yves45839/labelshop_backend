@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-i!k3jzi@6*&luy^b_izz)ap-)@9c&k&wly-k-t7i!zl#!26c39
 DEBUG = False
 
 ALLOWED_HOSTS = ["labelshop-backend.onrender.com", "127.0.0.1", "localhost", "https://labelshop-frontend.vercel.app", ]
-CSRF_TRUSTED_ORIGINS = ["https://labelshop-backend.onrender.com"]
+CSRF_TRUSTED_ORIGINS = ["https://labelshop-frontend.vercel.app", "https://labelshop-backend.onrender.com"]
 
 
 # Application definition
