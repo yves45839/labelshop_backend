@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-i!k3jzi@6*&luy^b_izz)ap-)@9c&k&wly-k-t7i!zl#!26c39
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["labelshop-backend.onrender.com", "127.0.0.1", "localhost"]
+ALLOWED_HOSTS = ["labelshop-backend.onrender.com", "127.0.0.1", "localhost", "https://labelshop-frontend.vercel.app/"]
 CSRF_TRUSTED_ORIGINS = ["https://labelshop-backend.onrender.com"]
 
 
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -137,6 +138,6 @@ CACHES = {
 }
 
 CORS_ALLOWED_ORIGINS = [
-    "https://fontend",  # URL du frontend React sur Render
+    "https://labelshop-frontend.vercel.app/",  # URL du frontend React sur Render
     "http://localhost:3000",  # Pour le développement local
 ]
