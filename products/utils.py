@@ -2,6 +2,7 @@ import xmlrpc.client
 from .models import Product
 from django.utils.text import slugify
 
+
 ODOO_URL = "https://labr1.odoo.com/xmlrpc/2/object"
 DB_NAME = "labr1"
 UID = 2  # Remplace par ton UID correct

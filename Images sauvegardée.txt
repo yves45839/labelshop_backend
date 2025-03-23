@@ -1,0 +1,496 @@
+Images sauvegardée
+
+PS C:\Users\HP ELITEBOOK 840 G3\OneDrive\Desktop\labelshop_backend\products\management\commands> python .\save_images.py
+✅ Image sauvegardée : DC.jpeg
+✅ Image sauvegardée : DS-7104NI-Q1_4P_M.jpeg
+✅ Image sauvegardée : 240F-A007-CP.jpeg
+✅ Image sauvegardée : 3TO.jpeg
+✅ Image sauvegardée : 500GO.jpeg
+✅ Image sauvegardée : 6TERA.jpeg
+✅ Image sauvegardée : BNC.jpeg
+✅ Image sauvegardée : CAT6 305M RESEAU.jpeg
+✅ Image sauvegardée : CAT6 FTP 500M FULL COPPER.jpeg
+✅ Image sauvegardée : CAT6 FTP OUTDOOR.jpeg
+✅ Image sauvegardée : CAT6 FTP+DC.jpeg
+✅ Image sauvegardée : CAT6-FTP-500M CCA.jpeg
+✅ Image sauvegardée : CAT6-FTP305 FULCOPPER.jpeg
+✅ Image sauvegardée : CAT7 SFTP 500 FULL COPPER.jpeg
+✅ Image sauvegardée : CG577-1.9.jpeg
+✅ Image sauvegardée : COFFRET 4U.jpeg
+✅ Image sauvegardée : COFFRET 6U.jpeg
+✅ Image sauvegardée : COFFRET 9U.jpeg
+✅ Image sauvegardée : CONNECTEUR RJ45.jpeg
+Ligne ignorée (barcode/image manquante) : CONNECTEUR RJ45
+✅ Image sauvegardée : CONNECTEURS MANCHONS.jpeg
+✅ Image sauvegardée : COXIAL RJ59 GTECH.jpeg
+✅ Image sauvegardée : CS-H6C.jpeg
+✅ Image sauvegardée : CS-L2S-11FCP.jpeg
+✅ Image sauvegardée : DISQUE DUR 500GB.jpeg
+✅ Image sauvegardée : DS- 7116HGHI-M1.jpeg
+✅ Image sauvegardée : DS- 7608NI-I2.jpeg
+✅ Image sauvegardée : DS-1004KI.jpeg
+✅ Image sauvegardée : DS-1005KI.jpeg
+✅ Image sauvegardée : DS-1200KI.jpeg
+✅ Image sauvegardée : DS-1275ZJ-SUS.jpeg
+✅ Image sauvegardée : DS-1280ZJ-DM46.jpeg
+✅ Image sauvegardée : DS-1280ZJ-S.jpeg
+✅ Image sauvegardée : DS-1280ZJ-XS.jpeg
+✅ Image sauvegardée : DS-1310HP-EI.jpeg
+✅ Image sauvegardée : DS-1600KI.jpeg
+✅ Image sauvegardée : DS-1602ZJ-POLE.jpeg
+✅ Image sauvegardée : DS-1663ZJ.jpeg
+✅ Image sauvegardée : DS-1LN6U-SC1.jpeg
+✅ Image sauvegardée : DS-1LN6U-W_CCA.jpeg
+✅ Image sauvegardée : DS-2387G2H-LIU.jpeg
+✅ Image sauvegardée : DS-2AE4215TI-D.jpeg
+✅ Image sauvegardée : DS-2AE4225TI-D.jpeg
+✅ Image sauvegardée : DS-2AE4225TL-D E.jpeg
+✅ Image sauvegardée : DS-2AE5232TI-A.jpeg
+✅ Image sauvegardée : DS-2CD1021G0-I.jpeg
+✅ Image sauvegardée : DS-2CD1021G2-IU.jpeg
+✅ Image sauvegardée : DS-2CD1023G0E-I.jpeg
+✅ Image sauvegardée : DS-2CD1023G2-LIU.jpeg
+✅ Image sauvegardée : DS-2CD1027G2-L.jpeg
+✅ Image sauvegardée : DS-2CD1027G2-LUF    2.8MM.jpeg
+✅ Image sauvegardée : DS-2CD1027G2H-LIU.jpeg
+✅ Image sauvegardée : DS-2CD1043G2-LIDUF_4G_SL.jpeg
+✅ Image sauvegardée : DS-2CD1047G2-L.jpeg
+✅ Image sauvegardée : DS-2CD1047G2-L (2.8mm).jpeg
+✅ Image sauvegardée : DS-2CD1047G2-LUF.jpeg
+✅ Image sauvegardée : DS-2CD1047G2H-LIU.jpeg
+✅ Image sauvegardée : DS-2CD1063G2-LIUF_SL.jpeg
+✅ Image sauvegardée : DS-2CD1083G2-LIU.jpeg
+✅ Image sauvegardée : DS-2CD1121G0-I.jpeg
+✅ Image sauvegardée : DS-2CD1123G2-LIU.jpeg
+✅ Image sauvegardée : DS-2CD1143G2-LIU.jpeg
+✅ Image sauvegardée : DS-2CD1327G2-L.jpeg
+✅ Image sauvegardée : DS-2CD1327G2-LUF    2.8MM.jpeg
+✅ Image sauvegardée : DS-2CD1327G2H-LIU.jpeg
+Ligne ignorée (barcode/image manquante) : CAMERA IP
+✅ Image sauvegardée : DS-2CD1347G2-L.jpeg
+✅ Image sauvegardée : DS-2CD1347G2-L(2.8mm).jpeg
+✅ Image sauvegardée : DS-2CD1347G2-LUF.jpeg
+✅ Image sauvegardée : DS-2CD1347G2H-LIU.jpeg
+✅ Image sauvegardée : DS-2CD1363G2-LIUF_SL.jpeg
+✅ Image sauvegardée : DS-2CD1363G2-WIF_SL.jpeg
+✅ Image sauvegardée : DS-2CD1623G0-IZ.jpeg
+✅ Image sauvegardée : DS-2CD1653G0-IZ.jpeg
+✅ Image sauvegardée : DS-2CD1663G2-LIZU_SL    2.8-12mm.jpeg
+✅ Image sauvegardée : DS-2CD1723G0-IZ.jpeg
+✅ Image sauvegardée : DS-2CD1753G0-IZ.jpeg
+✅ Image sauvegardée : DS-2CD1P23G2-IUF    2.8mm.jpeg
+✅ Image sauvegardée : DS-2CD1P27G2-LUF.jpeg
+✅ Image sauvegardée : DS-2CD1T23G2-LIU    4mm.jpeg
+✅ Image sauvegardée : DS-2CD1T27G2-LUF    4mm.jpeg
+✅ Image sauvegardée : DS-2CD1T43G2-LIU    4mm.jpeg
+✅ Image sauvegardée : DS-2CD1T47G0-L.jpeg
+✅ Image sauvegardée : DS-2CD1T63G2-LIUF_SL.jpeg
+✅ Image sauvegardée : DS-2CD1T83G2-LIU.jpeg
+✅ Image sauvegardée : DS-2CD2047G2-L.jpeg
+✅ Image sauvegardée : DS-2CD2047G2-LU.jpeg
+✅ Image sauvegardée : DS-2CD2083G2-I(2.8mm).jpeg
+✅ Image sauvegardée : DS-2CD2087G2H-LIU_SL.jpeg
+✅ Image sauvegardée : DS-2CD2143G2-IU.jpeg
+✅ Image sauvegardée : DS-2CD2183G2-I(2.8mm).jpeg
+✅ Image sauvegardée : DS-2CD2183GO-IS.jpeg
+✅ Image sauvegardée : DS-2CD2345G0P-I.jpeg
+✅ Image sauvegardée : DS-2CD2347G2-L.jpeg
+✅ Image sauvegardée : DS-2CD2347G2P-LSU_SL.jpeg
+✅ Image sauvegardée : DS-2CD2387G2H-LI(U).jpeg
+✅ Image sauvegardée : DS-2CD2387G2H-LIU.jpeg
+✅ Image sauvegardée : DS-2CD2387G2H-LIU_SL.jpeg
+✅ Image sauvegardée : DS-2CD2643G2-IZS.jpeg
+✅ Image sauvegardée : DS-2CD2955G0-ISU.jpeg
+✅ Image sauvegardée : DS-2CD2D25G1_M-D_NF.jpeg
+Ligne ignorée (barcode/image manquante) : DS-2CD2D25G1/M-D/NF
+✅ Image sauvegardée : DS-2CD2E43G2-U.jpeg
+✅ Image sauvegardée : DS-2CD2T47G2-LSU_SL    2.8MM    C.jpeg
+✅ Image sauvegardée : DS-2CD2T47G2H-LISU_SL.jpeg
+✅ Image sauvegardée : DS-2CD2T47G2P-LSU_SL.jpeg
+✅ Image sauvegardée : DS-2CD2T63G2-4I.jpeg
+✅ Image sauvegardée : DS-2CD2T83G2-4I(2.8mm).jpeg
+✅ Image sauvegardée : DS-2CD2T87G2-L(2.8mm).jpeg
+✅ Image sauvegardée : DS-2CDE2A404IW-DE3.jpeg
+✅ Image sauvegardée : DS-2CE10DF0T-LPFS.jpeg
+✅ Image sauvegardée : DS-2CE10DF0T-PF.jpeg
+✅ Image sauvegardée : DS-2CE10DFOT-LPFS.jpeg
+✅ Image sauvegardée : DS-2CE10KF0T-PFS.jpeg
+✅ Image sauvegardée : DS-2CE12H0T-PIRLO.jpeg
+✅ Image sauvegardée : DS-2CE12KF0T-FS.jpeg
+✅ Image sauvegardée : DS-2CE16D0T-EXIPF.jpeg
+✅ Image sauvegardée : DS-2CE16D0T-ITPFS.jpeg
+✅ Image sauvegardée : DS-2CE16D0T-LPFS.jpeg
+✅ Image sauvegardée : DS-2CE16D0T-LPTS.jpeg
+✅ Image sauvegardée : DS-2CE16D0T-LPXTS.jpeg
+✅ Image sauvegardée : DS-2CE16D0T-TPFS.jpeg
+✅ Image sauvegardée : DS-2CE16DF0T-LPFS_ECO.jpeg
+✅ Image sauvegardée : DS-2CE16DOT-LPFS.jpeg
+✅ Image sauvegardée : DS-2CE16H0T-IT3ZF.jpeg
+✅ Image sauvegardée : DS-2CE16H0T-ITPF.jpeg
+✅ Image sauvegardée : DS-2CE16H0T-ITPFS.jpeg
+✅ Image sauvegardée : DS-2CE16HOT-ITPF.jpeg
+✅ Image sauvegardée : DS-2CE16K0T-LPFS.jpeg
+✅ Image sauvegardée : DS-2CE16KOT-ITPF.jpeg
+✅ Image sauvegardée : DS-2CE16KOT-LPFS.jpeg
+✅ Image sauvegardée : DS-2CE17D0T-LTS.jpeg
+✅ Image sauvegardée : DS-2CE17D0T-LXTS.jpeg
+✅ Image sauvegardée : DS-2CE17DOT-LTS.jpeg
+✅ Image sauvegardée : DS-2CE17H0T-IT5F.jpeg
+✅ Image sauvegardée : DS-2CE17K0T-LFS.jpeg
+✅ Image sauvegardée : DS-2CE19H0T-AIT3ZF.jpeg
+✅ Image sauvegardée : DS-2CE19H0T-IT3ZF.jpeg
+✅ Image sauvegardée : DS-2CE38D8T-PIR.jpeg
+✅ Image sauvegardée : DS-2CE56H0T-IT3F.jpeg
+✅ Image sauvegardée : DS-2CE57U0T-VPITF.jpeg
+✅ Image sauvegardée : DS-2CE70DF0T-LPFS.jpeg
+✅ Image sauvegardée : DS-2CE70DFOT-MF.jpeg
+✅ Image sauvegardée : DS-2CE70KF0T-PFS.jpeg
+✅ Image sauvegardée : DS-2CE76D0T-EXIPF.jpeg
+✅ Image sauvegardée : DS-2CE76D0T-ITPFS.jpeg
+✅ Image sauvegardée : DS-2CE76D0T-LPFS.jpeg
+✅ Image sauvegardée : DS-2CE76D0T-TPFS.jpeg
+✅ Image sauvegardée : DS-2CE76H0T-ITPF.jpeg
+✅ Image sauvegardée : DS-2CE76H0T-ITPFS.jpeg
+✅ Image sauvegardée : DS-2CE76K0T-LPFS.jpeg
+✅ Image sauvegardée : DS-2CE79H0T-IT3ZF.jpeg
+✅ Image sauvegardée : DS-2CV2041G2-IDW.jpeg
+✅ Image sauvegardée : DS-2CV2141G2-IDW.jpeg
+✅ Image sauvegardée : DS-2CV2Q21FD-IW.jpeg
+✅ Image sauvegardée : DS-2DE2A204IW-DE3.jpeg
+✅ Image sauvegardée : DS-2DE2A404IW-DE3.jpeg
+✅ Image sauvegardée : DS-2DE4215IW-DE T5.jpeg
+✅ Image sauvegardée : DS-2DE4225IW-DE.jpeg
+✅ Image sauvegardée : DS-2DE4415IW-DE    T5.jpeg
+✅ Image sauvegardée : DS-2DE4415IW-DE T5.jpeg
+✅ Image sauvegardée : DS-2DE4425IW-DE    T5.jpeg
+✅ Image sauvegardée : DS-2DE4425IW-DE T5.jpeg
+✅ Image sauvegardée : DS-2DE4A225IW-DE.jpeg
+✅ Image sauvegardée : DS-2DE5232W-AE    T5.jpeg
+✅ Image sauvegardée : DS-2DE7232IW-AE(S5).jpeg
+✅ Image sauvegardée : DS-2DE7A220MCG-EB.jpeg
+✅ Image sauvegardée : DS-2DE7A432IW-AEB T5.jpeg
+✅ Image sauvegardée : DS-2DE7A812MCG-EB.jpeg
+✅ Image sauvegardée : DS-2DF8225IH-AEL.jpeg
+✅ Image sauvegardée : DS-2DF8C848I5XS-AELW.jpeg
+✅ Image sauvegardée : DS-2FA1205-C8.jpeg
+✅ Image sauvegardée : DS-2FA1208-C16.jpeg
+✅ Image sauvegardée : DS-2FA1225-C5.jpeg
+Ligne ignorée (barcode/image manquante) : CAMÉRA RÉSEAU PTZ
+✅ Image sauvegardée : DS-2SE4C225MWG-E    12F0.jpeg
+✅ Image sauvegardée : DS-2SE4C225MWG-E_26.jpeg
+✅ Image sauvegardée : DS-2SE4C425MWG-E 14F0.jpeg
+✅ Image sauvegardée : DS-2SE4C425MWG-E_26.jpeg
+✅ Image sauvegardée : DS-2SE7C432MW-AEB    14F1 P3.jpeg
+✅ Image sauvegardée : DS-2SE7C432MWG-EB_26.jpeg
+✅ Image sauvegardée : DS-2SF8C442MXS-DLW    14F1 P3.jpeg
+✅ Image sauvegardée : DS-2XS2T41G1-ID_4G_C05S0.jpeg
+✅ Image sauvegardée : DS-2XS2T41G1-ID_4G_C05S07.jpeg
+✅ Image sauvegardée : DS-3E0109P-E_M(B).jpeg
+✅ Image sauvegardée : DS-3E0310HP-E.jpeg
+✅ Image sauvegardée : DS-3E0310P-E_M.jpeg
+✅ Image sauvegardée : DS-3E0318P-E_M(C).jpeg
+✅ Image sauvegardée : DS-3E0326P-E_M(C).jpeg
+✅ Image sauvegardée : DS-3E0505-0.jpeg
+Ligne ignorée (barcode/image manquante) :  SWITCH GIGABIT 5 PORTS
+✅ Image sauvegardée : DS-3E0505D-E.jpeg
+✅ Image sauvegardée : DS-3E0508D-E.jpeg
+✅ Image sauvegardée : DS-3E0510P-E_M.jpeg
+✅ Image sauvegardée : DS-3E0518P-E_M.jpeg
+✅ Image sauvegardée : DS-3E0524-E.jpeg
+✅ Image sauvegardée : DS-3E1105P-EI.jpeg
+✅ Image sauvegardée : DS-3E1105P-EI_M.jpeg
+✅ Image sauvegardée : DS-3E1309P-EI_M.jpeg
+✅ Image sauvegardée : DS-3E1310HP-EI.jpeg
+✅ Image sauvegardée : DS-3E1318P-EI_M.jpeg
+✅ Image sauvegardée : DS-3E1326P-EI_M.jpeg
+✅ Image sauvegardée : DS-3E1510P-EI_M.jpeg
+✅ Image sauvegardée : DS-3E1518P-EI_M.jpeg
+✅ Image sauvegardée : DS-3E1526P-EI_M.jpeg
+✅ Image sauvegardée : DS-3T1310P-SI_HS.jpeg
+✅ Image sauvegardée : DS-3WR3N.jpeg
+✅ Image sauvegardée : DS-6916UDI (C).jpeg
+✅ Image sauvegardée : DS-6J142_7104HGHI-F1+4CAM.jpeg
+✅ Image sauvegardée : DS-7104HUHI-K2.jpeg
+✅ Image sauvegardée : DS-7108HUHI-K2.jpeg
+✅ Image sauvegardée : DS-7108NI-Q1.jpeg
+✅ Image sauvegardée : DS-7108NI-Q1_8P_M.jpeg
+✅ Image sauvegardée : DS-7116HGHI-M2.jpeg
+✅ Image sauvegardée : DS-7204HGHI-M1.jpeg
+✅ Image sauvegardée : DS-7204HQHI-K1_E.jpeg
+✅ Image sauvegardée : DS-7208HGHI-M1.jpeg
+✅ Image sauvegardée : DS-7216HGHI-M1.jpeg
+✅ Image sauvegardée : DS-7232HGHI-M2.jpeg
+✅ Image sauvegardée : DS-7604NI-K1_4P.jpeg
+✅ Image sauvegardée : DS-7604NI-Q1.jpeg
+✅ Image sauvegardée : DS-7604NI-Q1_4P.jpeg
+✅ Image sauvegardée : DS-7604NXI-K1.jpeg
+✅ Image sauvegardée : DS-7604NXI-K1_4P.jpeg
+✅ Image sauvegardée : DS-7608NI-I2.jpeg
+✅ Image sauvegardée : DS-7608NI-Q1.jpeg
+✅ Image sauvegardée : DS-7608NI-Q1_8P.jpeg
+✅ Image sauvegardée : DS-7608NI-Q1_8P_M.jpeg
+✅ Image sauvegardée : DS-7608NI-Q2_8P.jpeg
+Ligne ignorée (barcode/image manquante) : NVR AcuSense 4K 8 canaux 1U
+✅ Image sauvegardée : DS-7608NXI-K1_8P.jpeg
+✅ Image sauvegardée : DS-7608NXI-K2.jpeg
+✅ Image sauvegardée : DS-7616NI-K2_16P.jpeg
+✅ Image sauvegardée : DS-7616NI-Q1.jpeg
+✅ Image sauvegardée : DS-7616NI-Q2.jpeg
+✅ Image sauvegardée : DS-7616NI-Q2_16P.jpeg
+✅ Image sauvegardée : DS-7616NXI-I2_S.jpeg
+✅ Image sauvegardée : DS-7616NXI-K1.jpeg
+✅ Image sauvegardée : DS-7616NXI-K2.jpeg
+✅ Image sauvegardée : DS-7616NXI-K2_16P.jpeg
+✅ Image sauvegardée : DS-7616NXI-Q2_16P.jpeg
+✅ Image sauvegardée : DS-7632NXI-K2.jpeg
+✅ Image sauvegardée : DS-7632NXI-K2_16P.jpeg
+✅ Image sauvegardée : DS-7661NI-Q2_16P.jpeg
+✅ Image sauvegardée : DS-7732NI-K4.jpeg
+✅ Image sauvegardée : DS-7732NI-K4_16P.jpeg
+✅ Image sauvegardée : DS-9664NI-M8.jpeg
+✅ Image sauvegardée : DS-9664NXI-I8_S.jpeg
+✅ Image sauvegardée : DS-D5B86RB_D.jpeg
+✅ Image sauvegardée : DS-E04HQHI-B.jpeg
+✅ Image sauvegardée : DS-E04NI-Q1_4P.jpeg
+Ligne ignorée (barcode/image manquante) : DVR eSSD 8 canaux 1080p Lite 1U H.265
+✅ Image sauvegardée : DS-E08HGHI-B.jpeg
+✅ Image sauvegardée : DS-E08NI-Q1.jpeg
+✅ Image sauvegardée : DS-E08NI-Q1_8P.jpeg
+✅ Image sauvegardée : DS-H1T802M.jpeg
+✅ Image sauvegardée : DS-J142I_7204HGHI-M1+2+2.jpeg
+✅ Image sauvegardée : DS-J142I_7208HGHI-M1+4+4.jpeg
+✅ Image sauvegardée : DS-J142I_7208HGHI-M1+4+4 CAM.jpeg
+✅ Image sauvegardée : DS-J142I_E04HGHI-B+4CAM.jpeg
+✅ Image sauvegardée : DS-J143I_104HGHI-B4CAM.jpeg
+✅ Image sauvegardée : DS-K1108AM.jpeg
+✅ Image sauvegardée : DS-K1108AMK.jpeg
+✅ Image sauvegardée : DS-K1201AM_F.jpeg
+✅ Image sauvegardée : DS-K1201AMF.jpeg
+✅ Image sauvegardée : DS-K1A802MF.jpeg
+✅ Image sauvegardée : DS-K1A8503MF-B.jpeg
+✅ Image sauvegardée : DS-K1F100-D8E.jpeg
+✅ Image sauvegardée : DS-K1F820-F.jpeg
+✅ Image sauvegardée : DS-K1T321MFWX.jpeg
+✅ Image sauvegardée : DS-K1T341CMF.jpeg
+✅ Image sauvegardée : DS-K1T342MFWX.jpeg
+✅ Image sauvegardée : DS-K1T342MFWX-E1.jpeg
+✅ Image sauvegardée : DS-K1T343MFX-MC-MS.jpeg
+✅ Image sauvegardée : DS-K1T502DBFWX.jpeg
+✅ Image sauvegardée : DS-K1T605M.jpeg
+✅ Image sauvegardée : DS-K1T671MF.jpeg
+✅ Image sauvegardée : DS-K1T802M.jpeg
+✅ Image sauvegardée : DS-K1T804AMF.jpeg
+✅ Image sauvegardée : DS-K1T805MBFWX.jpeg
+✅ Image sauvegardée : DS-K2602T.jpeg
+✅ Image sauvegardée : DS-K2604T.jpeg
+✅ Image sauvegardée : DS-K2812.jpeg
+✅ Image sauvegardée : DS-K2814.jpeg
+✅ Image sauvegardée : DS-K4DC103.jpeg
+✅ Image sauvegardée : DS-K4DC104.jpeg
+✅ Image sauvegardée : DS-K4DC105.jpeg
+✅ Image sauvegardée : DS-K4E100.jpeg
+✅ Image sauvegardée : DS-K4G100.jpeg
+✅ Image sauvegardée : DS-K4H255-LZ.jpeg
+✅ Image sauvegardée : DS-K4H255S.jpeg
+✅ Image sauvegardée : DS-K4H258-LZ.jpeg
+✅ Image sauvegardée : DS-K4H258-U.jpeg
+✅ Image sauvegardée : DS-K4H258S.jpeg
+✅ Image sauvegardée : DS-K7M-AW50.jpeg
+✅ Image sauvegardée : DS-K7P02.jpeg
+✅ Image sauvegardée : DS-K7P03.jpeg
+✅ Image sauvegardée : DS-K7P05.jpeg
+✅ Image sauvegardée : DS-K7TEB.jpeg
+✅ Image sauvegardée : DS-KAS261.jpeg
+✅ Image sauvegardée : DS-KAS541.jpeg
+✅ Image sauvegardée : DS-KD-ACW2.jpeg
+✅ Image sauvegardée : DS-KD-K12.jpeg
+✅ Image sauvegardée : DS-KD-KK.jpeg
+✅ Image sauvegardée : DS-KD-M.jpeg
+✅ Image sauvegardée : DS-KD-MFB.jpeg
+✅ Image sauvegardée : DS-KD8003-IME1(B).jpeg
+✅ Image sauvegardée : DS-KD9203-E6.jpeg
+✅ Image sauvegardée : DS-KD9203-FE6.jpeg
+Ligne ignorée (barcode/image manquante) : ECRAN ANALOGIQUE
+✅ Image sauvegardée : DS-KH2230P.jpeg
+✅ Image sauvegardée : DS-KH2230T.jpeg
+✅ Image sauvegardée : DS-KH6350-WTE1.jpeg
+✅ Image sauvegardée : DS-KH8520-WTE1.jpeg
+✅ Image sauvegardée : DS-KIS203T.jpeg
+✅ Image sauvegardée : DS-KIS212.jpeg
+✅ Image sauvegardée : DS-KIS302-P.jpeg
+✅ Image sauvegardée : DS-KIS303-P.jpeg
+✅ Image sauvegardée : DS-KIS303P.jpeg
+✅ Image sauvegardée : DS-KIS602(B).jpeg
+✅ Image sauvegardée : DS-KIS603-P.jpeg
+✅ Image sauvegardée : DS-KIS603-P(C).jpeg
+✅ Image sauvegardée : DS-KIS604-P(C).jpeg
+✅ Image sauvegardée : DS-KIS605-P(C).jpeg
+✅ Image sauvegardée : DS-KIS605P.jpeg
+Erreur décodage image DS-KIS804MFK1T804 Terminal d’accès par empreintes digitales de la série ValueK1T804 Terminal d’accès par empreintes digitales de la série Value : [Errno 2] No such file or directory: '..\\..\\..\\media\\products\\DS-KIS804MFK1T804 Terminal d’accès par empreintes digitales de la série ValueK1T804 Terminal d’accès par empreintes digitales de la série Value.jpeg'
+✅ Image sauvegardée : DS-KP600-HE1.jpeg
+✅ Image sauvegardée : DS-KP6000-HE1.jpeg
+✅ Image sauvegardée : DS-KP8000-HE1.jpeg
+Ligne ignorée (barcode/image manquante) : INTERPHONE VIDÉO AVEC LECTEUR DE BADGE
+✅ Image sauvegardée : DS-KV8113-WME1(B).jpeg
+✅ Image sauvegardée : DS-KV8213-WME1(B).jpeg
+✅ Image sauvegardée : DS-KV8413-WME1(C).jpeg
+✅ Image sauvegardée : DS-KV9503-WBE1.jpeg
+✅ Image sauvegardée : DS-PD1-MC-MS.jpeg
+✅ Image sauvegardée : DS-PD1-MC-WS.jpeg
+✅ Image sauvegardée : DS-PD2-P12QE-C.jpeg
+✅ Image sauvegardée : DS-PDB-IN-UNIVERSALBRACKET.jpeg
+✅ Image sauvegardée : DS-PDB-IN-Wallbracket.jpeg
+✅ Image sauvegardée : DS-PDC10AM-EG2-WE.jpeg
+✅ Image sauvegardée : DS-PDCL12-EG2-WE.jpeg
+✅ Image sauvegardée : DS-PDEBP1-EG2-WE.jpeg
+✅ Image sauvegardée : DS-PDHT-E-WE.jpeg
+✅ Image sauvegardée : DS-PDHT-EWE.jpeg
+✅ Image sauvegardée : DS-PDMC-EG2-WE(B).jpeg
+✅ Image sauvegardée : DS-PDMCX-E-WE.jpeg
+✅ Image sauvegardée : DS-PDMK-E-WE.jpeg
+✅ Image sauvegardée : DS-PDP15P-EG2-WE.jpeg
+✅ Image sauvegardée : DS-PDP15P-EG2-WE(B).jpeg
+✅ Image sauvegardée : DS-PDP18-EG2.jpeg
+✅ Image sauvegardée : DS-PDP18-HM-WE.jpeg
+✅ Image sauvegardée : DS-PDP18-HM_WE.jpeg
+✅ Image sauvegardée : DS-PDPC12P-EG2.jpeg
+✅ Image sauvegardée : DS-PDSKM-VG3.jpeg
+✅ Image sauvegardée : DS-PDSLK-4.jpeg
+✅ Image sauvegardée : DS-PDSMK-4.jpeg
+✅ Image sauvegardée : DS-PDSMK-E-WE.jpeg
+✅ Image sauvegardée : DS-PDWL-E-WE.jpeg
+✅ Image sauvegardée : DS-PHA20-W2P.jpeg
+✅ Image sauvegardée : DS-PHA48-EP.jpeg
+✅ Image sauvegardée : DS-PHA64-Kit-WE.jpeg
+✅ Image sauvegardée : DS-PI-BL.jpeg
+✅ Image sauvegardée : DS-PI-D60_F1.jpeg
+✅ Image sauvegardée : DS-PI-D60_FM.jpeg
+✅ Image sauvegardée : DS-PK1-E-WE.jpeg
+✅ Image sauvegardée : DS-PK1-LRT-HWE.jpeg
+✅ Image sauvegardée : DS-PK1-LT-WE.jpeg
+✅ Image sauvegardée : DS-PKF1-WE.jpeg
+✅ Image sauvegardée : DS-PM1-RT-HWE.jpeg
+✅ Image sauvegardée : DS-PR1-WE.jpeg
+✅ Image sauvegardée : DS-PS1-E-WE.jpeg
+✅ Image sauvegardée : DS-PS1-I-WE.jpeg
+✅ Image sauvegardée : DS-PS1-R.jpeg
+✅ Image sauvegardée : DS-PT-M1 Tag.jpeg
+✅ Image sauvegardée : DS-PWA64-KIT-WE.jpeg
+✅ Image sauvegardée : DS-PWA64-L-WE.jpeg
+✅ Image sauvegardée : DS-UPS1000.jpeg
+✅ Image sauvegardée : DS-UPS3000.jpeg
+✅ Image sauvegardée : DSK4H258S.jpeg
+✅ Image sauvegardée : EV-CA02 Balun.jpeg
+✅ Image sauvegardée : EXTENDER 120M KVM 4K.jpeg
+✅ Image sauvegardée : GACHE ELECTRIQUE.jpeg
+✅ Image sauvegardée : GTECH RESEAU BLANC 500M.jpeg
+✅ Image sauvegardée : HDD,ST3000VX012,2TB,5401.jpeg
+✅ Image sauvegardée : HDD,ST4000VX015,4TB,5401.jpeg
+✅ Image sauvegardée : HDD,ST8000VX004,8TB,3.5_.jpeg
+✅ Image sauvegardée : HF-S2.jpeg
+✅ Image sauvegardée : IC S50.jpeg
+✅ Image sauvegardée : IDS- 7108HGHI-M1_S.jpeg
+✅ Image sauvegardée : IDS-2CD7A46G0_P-IZHS.jpeg
+✅ Image sauvegardée : IDS-7104HGHI-M2.jpeg
+✅ Image sauvegardée : IDS-7104HQHI-M1_S.jpeg
+✅ Image sauvegardée : IDS-7108HGHI-M2.jpeg
+✅ Image sauvegardée : IDS-7108HQHI-M1_S.jpeg
+✅ Image sauvegardée : IDS-7108HUHI-M1_S.jpeg
+✅ Image sauvegardée : IDS-7116HQHI-M1_S.jpeg
+✅ Image sauvegardée : IDS-7204HQHI-M1_S.jpeg
+✅ Image sauvegardée : IDS-7208HUHI-M2_S.jpeg
+✅ Image sauvegardée : IDS-7216HQHI-M2_S.jpeg
+✅ Image sauvegardée : IDS-7216HUHI-M2_S.jpeg
+✅ Image sauvegardée : IDS-7232HQH-M2_S.jpeg
+✅ Image sauvegardée : LKV372S.jpeg
+✅ Image sauvegardée : LKV373KVM.jpeg
+✅ Image sauvegardée : HK8110HE-151.jpeg
+✅ Image sauvegardée : MICRO L2 64GB.jpeg
+✅ Image sauvegardée : NC634-CAT6-CCA.jpeg
+✅ Image sauvegardée : NC634-CAT6-COPPER.jpeg
+✅ Image sauvegardée : NC634-CAT6A-COPPER.jpeg
+✅ Image sauvegardée : NK42E0H.jpeg
+✅ Image sauvegardée : NK42E1H.jpeg
+✅ Image sauvegardée : NK42E3H.jpeg
+✅ Image sauvegardée : NP-SH100.jpeg
+✅ Image sauvegardée : OUTDOOR CCA FTP 305M.jpeg
+✅ Image sauvegardée : PS60W-E.jpeg
+✅ Image sauvegardée : RESEAU GRIS CAT6 305M.jpeg
+✅ Image sauvegardée : RG59-100-G-TECH.jpeg
+✅ Image sauvegardée : RJ59 COXIAL 100M.jpeg
+✅ Image sauvegardée : S50+TK4100.jpeg
+✅ Image sauvegardée : ST1000VX001,1T,5900RPM,4.jpeg
+✅ Image sauvegardée : TAG HIKVISION.jpeg
+Ligne ignorée (barcode/image manquante) : Pourboires
+✅ Image sauvegardée : UTP CAT6 305M.jpeg
+✅ Image sauvegardée : iDS-7104HQHI-M1_S.jpeg
+✅ Image sauvegardée : iDS-7104HUHI-K1.jpeg
+✅ Image sauvegardée : iDS-7208HQHI-M1_XT.jpeg
+✅ Image sauvegardée : iDS-7216HQHI-M1_XT.jpeg
+✅ Image sauvegardée : iDS-7232HQHI-M2_XT.jpeg
+Ligne ignorée (barcode/image manquante) : (TAG BLEU) PORTE CLÉ
+Ligne ignorée (barcode/image manquante) : BALUN 8MP
+Ligne ignorée (barcode/image manquante) : BRIS DE GLACE  ( GREEN )
+Ligne ignorée (barcode/image manquante) : Batterie onduleur PM-BT7 UPS premax 12V 7 AM
+Ligne ignorée (barcode/image manquante) : CABLE HDMI 1.8M CG577
+Ligne ignorée (barcode/image manquante) : CARTE RFID avec numéro
+Ligne ignorée (barcode/image manquante) : CAble ftp outdoor 200m
+✅ Image sauvegardée : COFFRET 12U.jpeg
+Ligne ignorée (barcode/image manquante) : CONNECTEUR BNC VERT
+Ligne ignorée (barcode/image manquante) : CS-H8c EZVIZ Caméra intelligente maison 4MP
+✅ Image sauvegardée : DS-2CD1043G2-LIU.jpeg
+✅ Image sauvegardée : DS-2CD1P43G2-IUF    2.8mm.jpeg
+Ligne ignorée (barcode/image manquante) : Caméra IP 2MP Tube (copie)
+✅ Image sauvegardée : DS-2CD1P47G2-LUF    2.8mm.jpeg
+Ligne ignorée (barcode/image manquante) : Cartes RFID
+Ligne ignorée (barcode/image manquante) : Cartes RFID avec écritures
+Ligne ignorée (barcode/image manquante) : CÂBLE  MTCO
+Ligne ignorée (barcode/image manquante) : DISQUE DUR 1 TERA
+Ligne ignorée (barcode/image manquante) : DISQUE DUR 10TB
+Ligne ignorée (barcode/image manquante) : DISQUE DUR 1TB
+Ligne ignorée (barcode/image manquante) : DS-1600KI(B)
+Ligne ignorée (barcode/image manquante) : DS-1602ZJ
+Ligne ignorée (barcode/image manquante) : DS-1618ZJ
+Ligne ignorée (barcode/image manquante) : DS-2CD1663G2-LIZSU/SL
+Ligne ignorée (barcode/image manquante) : DS-2CD1T67
+Ligne ignorée (barcode/image manquante) : DS-2CD1T67G2H-LIU
+Ligne ignorée (barcode/image manquante) : DS-2CD26447G2T-LSZ
+Ligne ignorée (barcode/image manquante) : DS-2CD2646G2G2-IZS caméra  IP AcuSense 4MP Tube
+Ligne ignorée (barcode/image manquante) : DS-2CD2647G2T-LZS
+Ligne ignorée (barcode/image manquante) : DS-2CE12KFOT-FS CAMERA ANALOGIQUE 3K COLORVU
+Ligne ignorée (barcode/image manquante) : DS-2CE56H0T-ITPF
+Ligne ignorée (barcode/image manquante) : DS-3E0505D-O  SWITCH 5 PORT GIGABIT
+Ligne ignorée (barcode/image manquante) : DS-7732NXI-I-14/S
+Ligne ignorée (barcode/image manquante) : DS-K1107AMK
+Ligne ignorée (barcode/image manquante) : DS-K1802
+Ligne ignorée (barcode/image manquante) : DS-KD-DIS
+Ligne ignorée (barcode/image manquante) : DS-KD3003-E6 PLATINE DE RUE MULTI APPARTEMENT
+Ligne ignorée (barcode/image manquante) : DS-KH63
+Ligne ignorée (barcode/image manquante) : DS-PI-T100
+Ligne ignorée (barcode/image manquante) : DS-PI-T100 Barrière infrarouge
+Ligne ignorée (barcode/image manquante) : DS-PK-LRT
+Ligne ignorée (barcode/image manquante) : DS-PM2-S (EU) module GSM pour alarme
+Ligne ignorée (barcode/image manquante) : DS-UPS2000 ONDULEUR
+Ligne ignorée (barcode/image manquante) : DS-UPS3000
+Ligne ignorée (barcode/image manquante) : Disque dur 1 tera
+Ligne ignorée (barcode/image manquante) : HDMI
+Ligne ignorée (barcode/image manquante) : Inscrit de carte
+Ligne ignorée (barcode/image manquante) : JVJHJHJHBKBJB
+Ligne ignorée (barcode/image manquante) : Lecteur Autonome wifi+ RJ45 (Carte +empreinte+Code) (copie)
+Ligne ignorée (barcode/image manquante) : NUMBER ONE  CABLE  CAT6 FTP 305M
+Ligne ignorée (barcode/image manquante) : NVR 8 PORTS
+✅ Image sauvegardée : DS-2DE7A432IW-AEB    T5.jpeg
+Ligne ignorée (barcode/image manquante) : Pince à sertir
+Ligne ignorée (barcode/image manquante) : RG59+DC-300 G-TECH
+Ligne ignorée (barcode/image manquante) : Receiver double relais
+Ligne ignorée (barcode/image manquante) : Rouleau de Câble FTP Indoor 200M
+Ligne ignorée (barcode/image manquante) : SERURRE ÉLECTRIQUE ( ELECTRIC CONTROLLER LOCK )
+Ligne ignorée (barcode/image manquante) : Serrure Electrique
+✅ Image sauvegardée : DS-3E0526P-E_M.jpeg
+Ligne ignorée (barcode/image manquante) : [CAT6 FTP OUTDOOR] Câble cat6 200m
+Ligne ignorée (barcode/image manquante) : [DS-1LN6UU/CCA]CABLE RESAEU GRIS CAT6 305M
+Ligne ignorée (barcode/image manquante) : [DS-1LN6UU/CCA]CABLE RESAEU GRIS CAT6 305M
+Ligne ignorée (barcode/image manquante) : [DS-1LN6UU/CCA]CABLE RESAEU ORANGE CAT6 305M
+Ligne ignorée (barcode/image manquante) : [DS-K4E100] Serrure électrique LINCY
+Ligne ignorée (barcode/image manquante) : [MICRO L2 128 GB] CARTE MEMOIRE 128 GB HIKVISION
+Ligne ignorée (barcode/image manquante) : uniarch
