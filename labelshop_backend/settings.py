@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-i!k3jzi@6*&luy^b_izz)ap-)@9c&k&wly-k-t7i!zl#!26c39'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["labelshop-backend.onrender.com", "127.0.0.1", "localhost", "https://labelshop-frontend.vercel.app", ]
 CSRF_TRUSTED_ORIGINS = ["https://labelshop-frontend.vercel.app", "https://labelshop-backend.onrender.com"]

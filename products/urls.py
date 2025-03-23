@@ -9,6 +9,4 @@ urlpatterns = [
     path('get-products/', get_products, name='get_products'),
 ]
 
-# 🚨 Toujours à la fin du fichier
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
