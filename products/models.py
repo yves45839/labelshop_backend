@@ -35,6 +35,14 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)  # Création
     updated_at = models.DateTimeField(auto_now=True)  # Mise à jour
 
+    # Visibilité et stratégie commerciale
+    hide_price = models.BooleanField(default=False)  # Masquer le prix ?
+    is_online = models.BooleanField(default=True)  # Produit visible en ligne ?
+
+    #Website
+    video_url = models.URLField(blank=True, null=True)  # Vidéo explicative
+    pdf_brochure = models.FileField(upload_to='product_brochures/', blank=True, null=True)
+
     class Meta:
         indexes = [
             models.Index(fields=['name']),  # Recherche rapide par nom
@@ -69,7 +77,7 @@ class Product(models.Model):
         # 3️⃣ Générer une meta_description SEO-friendly
         if not self.meta_description:
             self.meta_description = (
-                f"Achetez {self.name} ({self.barcode}) de haute qualité. "
+                f" {self.name} ({self.barcode})"
                 f"Disponible chez Label Retail, Expert Hikvision en Côte d'Ivoire."
             )
 
