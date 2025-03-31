@@ -18,7 +18,7 @@ def build_absolute_url(request, url):
         return None
     if url.startswith(('http://', 'https://')):
         return url
-    
+
     url = url.replace(settings.MEDIA_URL, '', 1)
     return request.build_absolute_uri(urljoin(settings.MEDIA_URL, url.lstrip('/')))
 
@@ -77,12 +77,33 @@ def search_products(request):
     product = Product.objects.filter(Q(slug=query) | Q(slug__icontains=query)).first()
 
     if product:
-        product_dict = model_to_dict(product)
+        product_dict = {
+            'id': product.id,
+            'name': product.name,
+            'slug': product.slug,
+            'description': product.description,
+            'list_price': product.list_price,
+            'default_code': product.default_code,
+            'barcode': product.barcode,
+            'categ_id': product.categ_id,
+            'stock_quantity': product.stock_quantity,
+            'is_available': product.is_available,
+        }
+
+        # Boucle sécurisée sur les champs images
         for image_field in ['image_1920', 'image_1024', 'image_512', 'image_256']:
-            url = getattr(product, image_field, None)
-            if hasattr(url, 'url'):
-                url = url.url
-            product_dict[image_field] = build_absolute_url(request, url) if url else None
+            field_value = getattr(product, image_field, None)
+
+            if isinstance(field_value, FieldFile):
+                # Champ image Django
+                product_dict[image_field] = build_absolute_url(
+                    request, field_value.url if field_value else None
+                )
+            elif isinstance(field_value, str):
+                # URL externe (depuis Odoo)
+                product_dict[image_field] = build_absolute_url(request, field_value)
+            else:
+                product_dict[image_field] = None
 
         return JsonResponse([product_dict], safe=False)
 
