@@ -19,11 +19,11 @@ class Product(models.Model):
     reviews_count = models.IntegerField(default=0)  # Nombre d’avis
 
     # 📷 Images
-    image_url = models.URLField(blank=True, null=True)  # URL principale
-    image_1920 = models.URLField(blank=True, null=True)  # Haute résolution
-    image_1024 = models.URLField(blank=True, null=True)  # Web optimisée
-    image_512 = models.URLField(blank=True, null=True)  # Miniature 512px
-    image_256 = models.URLField(blank=True, null=True)  # Miniature 256px
+    image_url = models.CharField(max_length=500, blank=True, null=True)
+    image_1920 = models.CharField(max_length=500, blank=True, null=True)
+    image_1024 = models.CharField(max_length=500, blank=True, null=True)
+    image_512 = models.CharField(max_length=500, blank=True, null=True)
+    image_256 = models.CharField(max_length=500, blank=True, null=True)
 
     # 🔍 SEO et recherche
     meta_title = models.CharField(max_length=255, blank=True, null=True)  # Balise <title>
