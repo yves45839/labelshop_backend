@@ -1,9 +1,10 @@
 import xmlrpc.client
 from django.http import JsonResponse
-from django.db.models import Q
 from django.forms.models import model_to_dict
+from django.db.models import Q
 from urllib.parse import urljoin
 from django.conf import settings
+from django.db.models.fields.files import FieldFile
 from .models import Product
 
 # Configuration Odoo
@@ -13,7 +14,9 @@ UID = 2  # Remplace par ton UID Odoo
 API_KEY = "08236cb28addcd5d40fa07e43eeabace4e1a4ffd"
 
 def build_absolute_url(request, url):
-    if url.startswith('http'):
+    if not url:
+        return None
+    if url.startswith(('http://', 'https://')):
         return url
     return request.build_absolute_uri(urljoin(settings.MEDIA_URL, url.lstrip('/')))
 
@@ -74,6 +77,8 @@ def search_products(request):
         product_dict = model_to_dict(product)
         for image_field in ['image_1920', 'image_1024', 'image_512', 'image_256']:
             url = getattr(product, image_field, None)
+            if hasattr(url, 'url'):
+                url = url.url
             product_dict[image_field] = build_absolute_url(request, url) if url else None
 
         return JsonResponse([product_dict], safe=False)
@@ -84,12 +89,32 @@ def search_products(request):
 # 🔹 3️⃣ Liste des produits stockés en base
 def get_products(request):
     products = []
+
     for prod in Product.objects.all():
         prod_dict = model_to_dict(prod)
+
         for image_field in ['image_1920', 'image_1024', 'image_512', 'image_256']:
-            url = getattr(prod, image_field, None)
-            prod_dict[image_field] = build_absolute_url(request, url) if url else None
+            field_value = getattr(prod, image_field, None)
+
+            # Traitement explicite pour les FieldFile
+            if isinstance(field_value, FieldFile):
+                if field_value and field_value.name:
+                    # Fichier local Django
+                    prod_dict[image_field] = request.build_absolute_uri(field_value.url)
+                else:
+                    prod_dict[image_field] = None
+            elif isinstance(field_value, str):
+                # URL externe (Odoo)
+                prod_dict[image_field] = build_absolute_url(request, field_value)
+            else:
+                prod_dict[image_field] = None
+
+        # 🔴 Correction définitive (au cas où d'autres FieldFile trainent)
+        for key, value in prod_dict.items():
+            if isinstance(value, FieldFile):
+                prod_dict[key] = request.build_absolute_uri(value.url) if value else None
 
         products.append(prod_dict)
 
     return JsonResponse(products, safe=False)
+
