@@ -18,7 +18,10 @@ def build_absolute_url(request, url):
         return None
     if url.startswith(('http://', 'https://')):
         return url
+    
+    url = url.replace(settings.MEDIA_URL, '', 1)
     return request.build_absolute_uri(urljoin(settings.MEDIA_URL, url.lstrip('/')))
+
 
 # 🔹 1️⃣ Récupération des produits depuis Odoo et stockage en base
 def fetch_odoo_products(request):
