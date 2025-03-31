@@ -1,9 +1,9 @@
 import xmlrpc.client
-import requests
 from django.http import JsonResponse
 from django.db.models import Q
 from django.forms.models import model_to_dict
-from django.core.exceptions import FieldDoesNotExist
+from urllib.parse import urljoin
+from django.conf import settings
 from .models import Product
 
 # Configuration Odoo
@@ -11,6 +11,11 @@ ODOO_URL = "https://labr1.odoo.com"
 DB_NAME = "labr1"
 UID = 2  # Remplace par ton UID Odoo
 API_KEY = "08236cb28addcd5d40fa07e43eeabace4e1a4ffd"
+
+def build_absolute_url(request, url):
+    if url.startswith('http'):
+        return url
+    return request.build_absolute_uri(urljoin(settings.MEDIA_URL, url.lstrip('/')))
 
 # 🔹 1️⃣ Récupération des produits depuis Odoo et stockage en base
 def fetch_odoo_products(request):
@@ -67,14 +72,9 @@ def search_products(request):
 
     if product:
         product_dict = model_to_dict(product)
-        for field_name in product_dict:
-            try:
-                field = product._meta.get_field(field_name)
-                if field.get_internal_type() in ['ImageField', 'FileField']:
-                    file = getattr(product, field_name)
-                    product_dict[field_name] = file.url if file else None
-            except FieldDoesNotExist:
-                continue
+        for image_field in ['image_1920', 'image_1024', 'image_512', 'image_256']:
+            url = getattr(product, image_field, None)
+            product_dict[image_field] = build_absolute_url(request, url) if url else None
 
         return JsonResponse([product_dict], safe=False)
 
@@ -86,14 +86,10 @@ def get_products(request):
     products = []
     for prod in Product.objects.all():
         prod_dict = model_to_dict(prod)
-        for field_name in prod_dict:
-            try:
-                field = prod._meta.get_field(field_name)
-                if field.get_internal_type() in ['ImageField', 'FileField']:
-                    file = getattr(prod, field_name)
-                    prod_dict[field_name] = file.url if file else None
-            except (FieldDoesNotExist, ValueError):
-                prod_dict[field_name] = None
+        for image_field in ['image_1920', 'image_1024', 'image_512', 'image_256']:
+            url = getattr(prod, image_field, None)
+            prod_dict[image_field] = build_absolute_url(request, url) if url else None
+
         products.append(prod_dict)
 
     return JsonResponse(products, safe=False)
