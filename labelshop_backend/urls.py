@@ -6,6 +6,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('products/', include('products.urls')),
+    path('accounts/', include('accounts.urls')),
+    path('cart/', include('cart.urls')),
 ]
 
 # Pour servir les médias uniquement en développement :
