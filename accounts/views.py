@@ -1,7 +1,7 @@
 import json
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, authenticate, login, logout
 
 User = get_user_model()
 
@@ -35,3 +35,55 @@ def register_user(request):
     user.save()
 
     return JsonResponse({'id': user.id, 'username': user.username, 'role': user.role})
+
+
+@csrf_exempt
+def login_user(request):
+    if request.method != 'POST':
+        return JsonResponse({'error': 'Method not allowed'}, status=405)
+
+    try:
+        data = json.loads(request.body.decode('utf-8'))
+    except json.JSONDecodeError:
+        return JsonResponse({'error': 'Invalid JSON'}, status=400)
+
+    username = data.get('username')
+    password = data.get('password')
+
+    if not username or not password:
+        return JsonResponse({'error': 'Missing credentials'}, status=400)
+
+    user = authenticate(request, username=username, password=password)
+
+    if user is None:
+        return JsonResponse({'error': 'Invalid credentials'}, status=401)
+
+    login(request, user)
+
+    return JsonResponse({'message': 'Logged in', 'id': user.id, 'username': user.username, 'role': user.role})
+
+
+@csrf_exempt
+def logout_user(request):
+    if request.method != 'POST':
+        return JsonResponse({'error': 'Method not allowed'}, status=405)
+
+    if request.user.is_authenticated:
+        logout(request)
+
+    return JsonResponse({'message': 'Logged out'})
+
+
+@csrf_exempt
+def cancel_account(request):
+    if request.method != 'DELETE':
+        return JsonResponse({'error': 'Method not allowed'}, status=405)
+
+    if not request.user.is_authenticated:
+        return JsonResponse({'error': 'Authentication required'}, status=401)
+
+    user = request.user
+    user.delete()
+    logout(request)
+
+    return JsonResponse({'message': 'Account deleted'})
