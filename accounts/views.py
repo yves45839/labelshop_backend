@@ -3,6 +3,8 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import get_user_model, authenticate, login, logout
 
+from .utils import generate_and_send_otp, verify_otp
+
 User = get_user_model()
 
 
@@ -33,6 +35,9 @@ def register_user(request):
     user = User(username=username, email=email, role=role)
     user.set_password(password)
     user.save()
+
+    if email:
+        generate_and_send_otp(email)
 
     return JsonResponse({'id': user.id, 'username': user.username, 'role': user.role})
 
@@ -87,3 +92,21 @@ def cancel_account(request):
     logout(request)
 
     return JsonResponse({'message': 'Account deleted'})
+
+@csrf_exempt
+def verify_otp_view(request):
+    if request.method != 'POST':
+        return JsonResponse({'error': 'Method not allowed'}, status=405)
+    try:
+        data = json.loads(request.body.decode('utf-8'))
+    except json.JSONDecodeError:
+        return JsonResponse({'error': 'Invalid JSON'}, status=400)
+
+    email = data.get('email')
+    code = data.get('code')
+    if not email or not code:
+        return JsonResponse({'error': 'Missing parameters'}, status=400)
+
+    if verify_otp(email, code):
+        return JsonResponse({'message': 'OTP verified'})
+    return JsonResponse({'error': 'Invalid or expired OTP'}, status=400)
