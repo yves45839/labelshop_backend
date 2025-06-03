@@ -27,7 +27,19 @@ def add_to_cart(request):
     product_id = data.get('product_id')
     quantity = data.get('quantity', 1)
 
+<<<<<<< HEAD
     if not product_id:
+=======
+    try:
+        quantity = int(quantity)
+    except (TypeError, ValueError):
+        return JsonResponse({'error': 'Invalid quantity'}, status=400)
+
+    if quantity <= 0:
+        return JsonResponse({'error': 'Invalid quantity'}, status=400)
+
+    if not user_id or not product_id:
+>>>>>>> main
         return JsonResponse({'error': 'Missing required fields'}, status=400)
 
     try:
@@ -72,6 +84,18 @@ def update_cart_item(request):
         return JsonResponse({'error': 'Missing required fields'}, status=400)
 
     try:
+<<<<<<< HEAD
+=======
+        quantity = int(quantity)
+    except (TypeError, ValueError):
+        return JsonResponse({'error': 'Invalid quantity'}, status=400)
+
+    if quantity <= 0:
+        return JsonResponse({'error': 'Invalid quantity'}, status=400)
+
+    try:
+        user = User.objects.get(id=user_id)
+>>>>>>> main
         product = Product.objects.get(id=product_id)
     except Product.DoesNotExist:
         return JsonResponse({'error': 'Product not found'}, status=404)
@@ -83,6 +107,7 @@ def update_cart_item(request):
     except CartItem.DoesNotExist:
         return JsonResponse({'error': 'Item not in cart'}, status=404)
 
+<<<<<<< HEAD
     try:
         quantity = int(quantity)
     except (TypeError, ValueError):
@@ -90,6 +115,8 @@ def update_cart_item(request):
     if quantity <= 0:
         return JsonResponse({'error': 'Invalid quantity'}, status=400)
 
+=======
+>>>>>>> main
     item.quantity = quantity
     item.save()
 
