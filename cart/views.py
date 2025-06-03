@@ -26,6 +26,14 @@ def add_to_cart(request):
     product_id = data.get('product_id')
     quantity = data.get('quantity', 1)
 
+    try:
+        quantity = int(quantity)
+    except (TypeError, ValueError):
+        return JsonResponse({'error': 'Invalid quantity'}, status=400)
+
+    if quantity <= 0:
+        return JsonResponse({'error': 'Invalid quantity'}, status=400)
+
     if not user_id or not product_id:
         return JsonResponse({'error': 'Missing required fields'}, status=400)
 
@@ -61,6 +69,14 @@ def update_cart_item(request):
         return JsonResponse({'error': 'Missing required fields'}, status=400)
 
     try:
+        quantity = int(quantity)
+    except (TypeError, ValueError):
+        return JsonResponse({'error': 'Invalid quantity'}, status=400)
+
+    if quantity <= 0:
+        return JsonResponse({'error': 'Invalid quantity'}, status=400)
+
+    try:
         user = User.objects.get(id=user_id)
         product = Product.objects.get(id=product_id)
     except (User.DoesNotExist, Product.DoesNotExist):
@@ -72,11 +88,8 @@ def update_cart_item(request):
     except CartItem.DoesNotExist:
         return JsonResponse({'error': 'Item not in cart'}, status=404)
 
-    if quantity <= 0:
-        item.delete()
-    else:
-        item.quantity = quantity
-        item.save()
+    item.quantity = quantity
+    item.save()
 
     return JsonResponse({'message': 'Cart updated'})
 
