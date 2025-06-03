@@ -2,6 +2,7 @@ import json
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 from products.models import Product
 from .models import Cart, CartItem
 
@@ -14,6 +15,7 @@ def get_user_cart(user):
 
 
 @csrf_exempt
+@login_required
 def add_to_cart(request):
     if request.method != 'POST':
         return JsonResponse({'error': 'Method not allowed'}, status=405)
@@ -22,10 +24,12 @@ def add_to_cart(request):
     except json.JSONDecodeError:
         return JsonResponse({'error': 'Invalid JSON'}, status=400)
 
-    user_id = data.get('user_id')
     product_id = data.get('product_id')
     quantity = data.get('quantity', 1)
 
+<<<<<<< HEAD
+    if not product_id:
+=======
     try:
         quantity = int(quantity)
     except (TypeError, ValueError):
@@ -35,16 +39,27 @@ def add_to_cart(request):
         return JsonResponse({'error': 'Invalid quantity'}, status=400)
 
     if not user_id or not product_id:
+>>>>>>> main
         return JsonResponse({'error': 'Missing required fields'}, status=400)
 
     try:
-        user = User.objects.get(id=user_id)
         product = Product.objects.get(id=product_id)
-    except (User.DoesNotExist, Product.DoesNotExist):
-        return JsonResponse({'error': 'User or product not found'}, status=404)
-
+    except Product.DoesNotExist:
+        return JsonResponse({'error': 'Product not found'}, status=404)
+    user = request.user
     cart = get_user_cart(user)
-    item, created = CartItem.objects.get_or_create(cart=cart, product=product, defaults={'quantity': quantity})
+    try:
+        quantity = int(quantity)
+    except (TypeError, ValueError):
+        return JsonResponse({'error': 'Invalid quantity'}, status=400)
+    if quantity <= 0:
+        return JsonResponse({'error': 'Invalid quantity'}, status=400)
+
+    item, created = CartItem.objects.get_or_create(
+        cart=cart,
+        product=product,
+        defaults={'quantity': quantity},
+    )
     if not created:
         item.quantity += quantity
         item.save()
@@ -53,6 +68,7 @@ def add_to_cart(request):
 
 
 @csrf_exempt
+@login_required
 def update_cart_item(request):
     if request.method != 'POST':
         return JsonResponse({'error': 'Method not allowed'}, status=405)
@@ -61,14 +77,15 @@ def update_cart_item(request):
     except json.JSONDecodeError:
         return JsonResponse({'error': 'Invalid JSON'}, status=400)
 
-    user_id = data.get('user_id')
     product_id = data.get('product_id')
     quantity = data.get('quantity')
 
-    if not user_id or not product_id or quantity is None:
+    if not product_id or quantity is None:
         return JsonResponse({'error': 'Missing required fields'}, status=400)
 
     try:
+<<<<<<< HEAD
+=======
         quantity = int(quantity)
     except (TypeError, ValueError):
         return JsonResponse({'error': 'Invalid quantity'}, status=400)
@@ -78,9 +95,11 @@ def update_cart_item(request):
 
     try:
         user = User.objects.get(id=user_id)
+>>>>>>> main
         product = Product.objects.get(id=product_id)
-    except (User.DoesNotExist, Product.DoesNotExist):
-        return JsonResponse({'error': 'User or product not found'}, status=404)
+    except Product.DoesNotExist:
+        return JsonResponse({'error': 'Product not found'}, status=404)
+    user = request.user
 
     cart = get_user_cart(user)
     try:
@@ -88,6 +107,16 @@ def update_cart_item(request):
     except CartItem.DoesNotExist:
         return JsonResponse({'error': 'Item not in cart'}, status=404)
 
+<<<<<<< HEAD
+    try:
+        quantity = int(quantity)
+    except (TypeError, ValueError):
+        return JsonResponse({'error': 'Invalid quantity'}, status=400)
+    if quantity <= 0:
+        return JsonResponse({'error': 'Invalid quantity'}, status=400)
+
+=======
+>>>>>>> main
     item.quantity = quantity
     item.save()
 
@@ -95,6 +124,7 @@ def update_cart_item(request):
 
 
 @csrf_exempt
+@login_required
 def remove_from_cart(request):
     if request.method != 'POST':
         return JsonResponse({'error': 'Method not allowed'}, status=405)
@@ -103,17 +133,16 @@ def remove_from_cart(request):
     except json.JSONDecodeError:
         return JsonResponse({'error': 'Invalid JSON'}, status=400)
 
-    user_id = data.get('user_id')
     product_id = data.get('product_id')
 
-    if not user_id or not product_id:
+    if not product_id:
         return JsonResponse({'error': 'Missing required fields'}, status=400)
 
     try:
-        user = User.objects.get(id=user_id)
         product = Product.objects.get(id=product_id)
-    except (User.DoesNotExist, Product.DoesNotExist):
-        return JsonResponse({'error': 'User or product not found'}, status=404)
+    except Product.DoesNotExist:
+        return JsonResponse({'error': 'Product not found'}, status=404)
+    user = request.user
 
     cart = get_user_cart(user)
     CartItem.objects.filter(cart=cart, product=product).delete()
@@ -137,11 +166,8 @@ def serialize_cart(cart):
 
 
 @csrf_exempt
-def view_cart(request, user_id):
-    try:
-        user = User.objects.get(id=user_id)
-    except User.DoesNotExist:
-        return JsonResponse({'error': 'User not found'}, status=404)
-
+@login_required
+def view_cart(request):
+    user = request.user
     cart = get_user_cart(user)
     return JsonResponse(serialize_cart(cart))
