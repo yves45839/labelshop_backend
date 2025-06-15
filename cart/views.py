@@ -27,9 +27,9 @@ def add_to_cart(request):
     product_id = data.get('product_id')
     quantity = data.get('quantity', 1)
 
-<<<<<<< HEAD
-    if not product_id:
-=======
+    if product_id is None:
+        return JsonResponse({'error': 'Missing required fields'}, status=400)
+
     try:
         quantity = int(quantity)
     except (TypeError, ValueError):
@@ -37,10 +37,6 @@ def add_to_cart(request):
 
     if quantity <= 0:
         return JsonResponse({'error': 'Invalid quantity'}, status=400)
-
-    if not user_id or not product_id:
->>>>>>> main
-        return JsonResponse({'error': 'Missing required fields'}, status=400)
 
     try:
         product = Product.objects.get(id=product_id)
@@ -48,12 +44,6 @@ def add_to_cart(request):
         return JsonResponse({'error': 'Product not found'}, status=404)
     user = request.user
     cart = get_user_cart(user)
-    try:
-        quantity = int(quantity)
-    except (TypeError, ValueError):
-        return JsonResponse({'error': 'Invalid quantity'}, status=400)
-    if quantity <= 0:
-        return JsonResponse({'error': 'Invalid quantity'}, status=400)
 
     item, created = CartItem.objects.get_or_create(
         cart=cart,
@@ -80,12 +70,10 @@ def update_cart_item(request):
     product_id = data.get('product_id')
     quantity = data.get('quantity')
 
-    if not product_id or quantity is None:
+    if product_id is None or quantity is None:
         return JsonResponse({'error': 'Missing required fields'}, status=400)
 
     try:
-<<<<<<< HEAD
-=======
         quantity = int(quantity)
     except (TypeError, ValueError):
         return JsonResponse({'error': 'Invalid quantity'}, status=400)
@@ -94,8 +82,6 @@ def update_cart_item(request):
         return JsonResponse({'error': 'Invalid quantity'}, status=400)
 
     try:
-        user = User.objects.get(id=user_id)
->>>>>>> main
         product = Product.objects.get(id=product_id)
     except Product.DoesNotExist:
         return JsonResponse({'error': 'Product not found'}, status=404)
@@ -106,17 +92,6 @@ def update_cart_item(request):
         item = CartItem.objects.get(cart=cart, product=product)
     except CartItem.DoesNotExist:
         return JsonResponse({'error': 'Item not in cart'}, status=404)
-
-<<<<<<< HEAD
-    try:
-        quantity = int(quantity)
-    except (TypeError, ValueError):
-        return JsonResponse({'error': 'Invalid quantity'}, status=400)
-    if quantity <= 0:
-        return JsonResponse({'error': 'Invalid quantity'}, status=400)
-
-=======
->>>>>>> main
     item.quantity = quantity
     item.save()
 
