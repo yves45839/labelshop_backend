@@ -10,12 +10,20 @@ BROCHURE_BASE_URL = os.environ.get(
     "BROCHURE_BASE_URL",
     "https://example.com/brochures/",
 )
+# Specific base URL for Hikvision products. Can be overridden in env.
+HIKVISION_BASE_URL = os.environ.get(
+    "HIKVISION_BROCHURE_BASE_URL",
+    "https://www.hikvision.com/brochures/",
+)
 
 
 class Command(BaseCommand):
     """Download PDF brochures for products and attach them."""
 
-    help = "Télécharge les fiches techniques PDF pour chaque produit."
+    help = (
+        "Télécharge les fiches techniques PDF pour chaque produit. "
+        "Les références commençant par DS- sont récupérées sur le site Hikvision."
+    )
 
     def handle(self, *args, **options):
         for product in Product.objects.all():
@@ -31,7 +39,13 @@ class Command(BaseCommand):
             if not identifier:
                 identifier = slugify(product.name)
             pdf_name = f"{identifier}.pdf"
-            url = f"{BROCHURE_BASE_URL.rstrip('/')}/{pdf_name}"
+
+            if product.barcode and product.barcode.startswith("DS-"):
+                base = HIKVISION_BASE_URL
+            else:
+                base = BROCHURE_BASE_URL
+
+            url = f"{base.rstrip('/')}/{pdf_name}"
 
             try:
                 response = requests.get(url, timeout=15)
