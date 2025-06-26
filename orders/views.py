@@ -2,6 +2,7 @@ import json
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 from cart.models import Cart, CartItem
 from .models import Order, OrderItem
 
@@ -26,6 +27,7 @@ def serialize_order(order):
 
 
 @csrf_exempt
+@login_required
 def create_order(request):
     if request.method != 'POST':
         return JsonResponse({'error': 'Method not allowed'}, status=405)
@@ -34,13 +36,10 @@ def create_order(request):
     except json.JSONDecodeError:
         return JsonResponse({'error': 'Invalid JSON'}, status=400)
 
+    user = request.user
     user_id = data.get('user_id')
-    if not user_id:
-        return JsonResponse({'error': 'Missing user_id'}, status=400)
-    try:
-        user = User.objects.get(id=user_id)
-    except User.DoesNotExist:
-        return JsonResponse({'error': 'User not found'}, status=404)
+    if user_id and int(user_id) != user.id:
+        return JsonResponse({'error': 'Cannot create order for another user'}, status=403)
 
     cart = Cart.objects.filter(user=user).first()
     if not cart or not cart.items.exists():
@@ -58,10 +57,9 @@ def create_order(request):
     return JsonResponse(serialize_order(order))
 
 
+@login_required
 def list_orders(request, user_id):
-    try:
-        user = User.objects.get(id=user_id)
-    except User.DoesNotExist:
-        return JsonResponse({'error': 'User not found'}, status=404)
-    orders = user.orders.prefetch_related('items__product')
+    if request.user.id != user_id:
+        return JsonResponse({'error': 'Forbidden'}, status=403)
+    orders = request.user.orders.prefetch_related('items__product')
     return JsonResponse([serialize_order(order) for order in orders], safe=False)
