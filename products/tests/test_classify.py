@@ -1,5 +1,5 @@
 from django.test import SimpleTestCase
-from products.utils import classify
+from products.classifier import classify
 
 
 class ClassifyTests(SimpleTestCase):
