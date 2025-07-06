@@ -28,10 +28,11 @@ class HasImagesFilter(admin.SimpleListFilter):
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
         'name', 'barcode', 'list_price', 'discount_price', 'stock_quantity',
+        'category_main', 'category_sub', 'category_type',
         'is_available', 'is_online', 'hide_price',
         'image_1920_preview', 'image_1024_preview', 'image_512_preview', 'image_256_preview', 'created_at'
     )
-    list_filter = ('is_available', 'is_online', 'hide_price', 'categ_id', 'brand', 'created_at', HasImagesFilter)
+    list_filter = ('is_available', 'is_online', 'hide_price', 'categ_id', 'category_main', 'category_sub', 'brand', 'created_at', HasImagesFilter)
     search_fields = ('name', 'barcode', 'default_code', 'keywords', 'search_tags', 'description')
     prepopulated_fields = {'slug': ('name',)}
     readonly_fields = ('created_at', 'updated_at', 'image_1920_preview', 'image_1024_preview', 'image_512_preview', 'image_256_preview')
@@ -40,7 +41,7 @@ class ProductAdmin(admin.ModelAdmin):
 
     fieldsets = (
         ('Informations générales', {
-            'fields': ('name', 'slug', 'barcode', 'default_code', 'odoo_id', 'categ_id', 'brand')
+            'fields': ('name', 'slug', 'barcode', 'default_code', 'odoo_id', 'categ_id', 'category_main', 'category_sub', 'category_type', 'brand')
         }),
         ('Descriptions', {
             'fields': ('short_description', 'description')
