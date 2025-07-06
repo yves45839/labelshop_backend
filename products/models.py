@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from .classifier import classify
 
 class Product(models.Model):
     odoo_id = models.IntegerField(unique=True, null=True)  # ID Odoo
@@ -14,6 +15,9 @@ class Product(models.Model):
     default_code = models.CharField(max_length=100, blank=True, null=True)  # Référence produit
     barcode = models.CharField(max_length=100, blank=True, null=True, unique=True)  # Code-barre (Modèle du produit)
     categ_id = models.CharField(max_length=255)  # Catégorie
+    category_main = models.CharField(max_length=100, blank=True, null=True)
+    category_sub = models.CharField(max_length=100, blank=True, null=True)
+    category_type = models.CharField(max_length=100, blank=True, null=True)
     brand = models.CharField(max_length=100, blank=True, null=True)  # Marque
     rating = models.FloatField(default=0.0)  # Note moyenne des avis
     reviews_count = models.IntegerField(default=0)  # Nombre d’avis
@@ -56,6 +60,12 @@ class Product(models.Model):
 
     def save(self, *args, **kwargs):
         """ Génération automatique des champs SEO avant sauvegarde """
+
+        # Appliquer la classification sur le barcode ou la référence
+        categories = classify(self.barcode or self.default_code or self.name)
+        self.category_main = categories[0] if len(categories) > 0 else None
+        self.category_sub = categories[1] if len(categories) > 1 else None
+        self.category_type = categories[2] if len(categories) > 2 else None
 
         # 1️⃣ Générer le slug basé sur le `barcode` ou `name`
         if not self.slug:
