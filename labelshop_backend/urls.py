@@ -10,6 +10,7 @@ urlpatterns = [
     path('cart/', include('cart.urls')),
     path('orders/', include('orders.urls')),
     path('inventory/', include('inventory.urls')),
+    path('blogs/', include('blog.urls')),
 ]
 
 # Pour servir les médias uniquement en développement :
