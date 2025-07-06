@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from .classifier import classify
 
 class Product(models.Model):
     odoo_id = models.IntegerField(unique=True, null=True)  # ID Odoo
@@ -56,6 +57,10 @@ class Product(models.Model):
 
     def save(self, *args, **kwargs):
         """ Génération automatique des champs SEO avant sauvegarde """
+
+        # 0️⃣ Mettre à jour automatiquement la catégorie à partir du SKU ou du nom
+        sku_source = self.default_code or self.name
+        self.categ_id = " / ".join(classify(sku_source))
 
         # 1️⃣ Générer le slug basé sur le `barcode` ou `name`
         if not self.slug:

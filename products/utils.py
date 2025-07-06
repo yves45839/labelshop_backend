@@ -1,6 +1,7 @@
 import xmlrpc.client
 from .models import Product
 from django.utils.text import slugify
+from .classifier import classify
 
 
 ODOO_URL = "https://labr1.odoo.com/xmlrpc/2/object"
@@ -50,3 +51,5 @@ def fetch_products_from_odoo():
                 'search_tags': f"{product['name']}, {product['default_code']}, {product.get('barcode', '')}"
             }
         )
+
+
