@@ -61,8 +61,12 @@ class Product(models.Model):
     def save(self, *args, **kwargs):
         """ Génération automatique des champs SEO avant sauvegarde """
 
-        # Appliquer la classification sur le barcode ou la référence
-        categories = classify(self.barcode or self.default_code or self.name)
+        # Appliquer la classification sur la référence (ou barcode / nom en secours)
+        categories = classify(
+            self.default_code or self.barcode or self.name,
+            self.category_main,
+            self.category_sub,
+        )
         self.category_main = categories[0] if len(categories) > 0 else None
         self.category_sub = categories[1] if len(categories) > 1 else None
         self.category_type = categories[2] if len(categories) > 2 else None

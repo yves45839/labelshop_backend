@@ -3,18 +3,33 @@ from products.classifier import classify
 
 
 class ClassifyTests(SimpleTestCase):
-    def test_video_analogique(self):
-        self.assertEqual(classify("DS-2AE123"), ["Vidéo analogique", "Caméras PTZ"])
-        self.assertEqual(classify("DS-2CE999"), ["Vidéo analogique", "Caméras fixes"])
-        self.assertEqual(classify("DS-7200"), ["Vidéo analogique", "DVR"])
+    def test_hikvision_rules(self):
+        self.assertEqual(
+            classify("DS-2CD2043G2-I"),
+            ["Vidéosurveillance IP", "Caméras IP", "Caméra IP fixe"],
+        )
+        self.assertEqual(
+            classify("DS-2DE4425IW-DE"),
+            ["Vidéosurveillance IP", "Caméras PTZ", "PTZ IP"],
+        )
+        self.assertEqual(
+            classify("DS-76XXNI"),
+            ["Enregistreurs", "NVR IP", "NVR"],
+        )
+        self.assertEqual(
+            classify("DS-K2604"),
+            ["Contrôle d'accès", "Contrôleurs & modules", None],
+        )
+        self.assertEqual(
+            classify("BNC-123"),
+            ["Accessoires généraux", "Câbles & connectique", "Connecteurs & fiches"],
+        )
 
-    def test_video_ip(self):
-        self.assertEqual(classify("ds-2df001"), ["Vidéo IP", "Caméras PTZ"])
-        self.assertEqual(classify("DS-2CD321"), ["Vidéo IP", "Caméras fixes"])
-        self.assertEqual(classify("DS-7632"), ["Vidéo IP", "NVR"])
-        self.assertEqual(classify("DS-3E0101"), ["Vidéo IP", "Switches PoE"])
-        self.assertEqual(classify("DS-A123"), ["Vidéo IP", "Stockage IP SAN/NAS"])
+    def test_fallback_to_existing_categories(self):
+        self.assertEqual(
+            classify("UNKNOWN", "Catégorie Odoo", "Sous-catégorie Odoo"),
+            ["Catégorie Odoo", "Sous-catégorie Odoo", None],
+        )
 
-    def test_default(self):
-        self.assertEqual(classify("UNKNOWN"), ["Non classé"])
+    def test_default_when_no_match(self):
         self.assertEqual(classify(""), ["Non classé"])

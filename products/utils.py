@@ -9,6 +9,22 @@ DB_NAME = "labr1"
 UID = 2  # Remplace par ton UID correct
 API_KEY = "08236cb28addcd5d40fa07e43eeabace4e1a4ffd"
 
+
+def _extract_odoo_categories(categ_label: str):
+    """Split an Odoo category label into main and sub categories."""
+
+    if not categ_label:
+        return None, None
+
+    parts = [part.strip() for part in categ_label.split("/") if part.strip()]
+    if not parts:
+        return None, None
+
+    if len(parts) == 1:
+        return parts[0], None
+
+    return parts[0], " / ".join(parts[1:])
+
 def fetch_products_from_odoo():
     client = xmlrpc.client.ServerProxy(ODOO_URL)
 
@@ -26,7 +42,12 @@ def fetch_products_from_odoo():
     )
 
     for product in products:
-        categories = classify(product.get('barcode') or product.get('default_code') or product['name'])
+        existing_main, existing_sub = _extract_odoo_categories(product['categ_id'][1]) if product.get('categ_id') else (None, None)
+        categories = classify(
+            product.get('default_code') or product.get('barcode') or product['name'],
+            existing_main,
+            existing_sub,
+        )
 
         Product.objects.update_or_create(
             odoo_id=product['id'],

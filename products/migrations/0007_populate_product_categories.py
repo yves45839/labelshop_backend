@@ -5,7 +5,11 @@ from products.classifier import classify
 def populate_categories(apps, schema_editor):
     Product = apps.get_model('products', 'Product')
     for product in Product.objects.all():
-        categories = classify(product.barcode or product.default_code or product.name)
+        categories = classify(
+            product.default_code or product.barcode or product.name,
+            product.category_main,
+            product.category_sub,
+        )
         product.category_main = categories[0] if len(categories) > 0 else None
         product.category_sub = categories[1] if len(categories) > 1 else None
         product.category_type = categories[2] if len(categories) > 2 else None
