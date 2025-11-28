@@ -1,78 +1,63 @@
 import re
+from typing import Optional, Tuple
 
 
-def contains_any(text: str, keywords) -> bool:
-    return any(word in text for word in keywords)
+HIK_RULES: list[Tuple[str, Tuple[str, str, Optional[str]]]] = [
+    (r"^DS-2CD", ("Vidéosurveillance IP", "Caméras IP", "Caméra IP fixe")),
+    (r"^DS-2CE", ("Vidéosurveillance analogique", "Caméras analogiques", "Caméra TurboHD")),
+    (r"^DS-2DE|^DS-2DF|^DS-2AE", ("Vidéosurveillance IP", "Caméras PTZ", "PTZ IP")),
+    (r"^DS-2TD|^DS-2T", ("Vidéosurveillance spécialisée", "Caméras thermiques", "Thermique")),
+    (r"^DS-2DP", ("Vidéosurveillance IP", "Caméras multi-capteurs", "PanoVu")),
+    (r"^DS-76|^DS-77|^DS-86|^DS-96", ("Enregistreurs", "NVR IP", "NVR")),
+    (r"^DS-71|^DS-72|^DS-73|^DS-81|^DS-90", ("Enregistreurs", "DVR analogiques", "DVR")),
+    (r"^DS-K1T", ("Contrôle d'accès", "Terminaux autonomes", "Terminal contrôle d'accès")),
+    (r"^DS-K1A", ("Contrôle d'accès", "Temps de présence", "Terminal de pointage")),
+    (r"^DS-K2", ("Contrôle d'accès", "Contrôleurs & modules", None)),
+    (r"^DS-K3", ("Contrôle d'accès", "Portillons & tourniquets", None)),
+    (r"^DS-K4", ("Contrôle d'accès", "Serrures & ventouses", None)),
+    (r"^DS-KH", ("Interphonie", "Moniteurs intérieurs", None)),
+    (r"^DS-KV|^DS-KD|^DS-KB", ("Interphonie", "Platines de rue & doorbells", None)),
+    (r"^DS-1L", ("Réseau & transmission", "Câbles réseau", "Câble UTP/FTP")),
+    (r"^DS-3E", ("Réseau & transmission", "Switches PoE", "Switch réseau")),
+    (r"^DS-P", ("Alarme intrusion", "AX PRO & périphériques", None)),
+    (r"^(3TO|4TO|6TERA|1TO|2TO|500GO)", ("Stockage", "Disques durs", "HDD vidéosurveillance")),
+    (r"^(BNC|DC|RCA)", ("Accessoires généraux", "Câbles & connectique", "Connecteurs & fiches")),
+]
 
 
-def classify(sku_raw: str):
-    """Return category path for a given SKU or label."""
-    if not sku_raw:
+def infer_categories(
+    default_code: str,
+    existing_main: Optional[str] = None,
+    existing_sub: Optional[str] = None,
+) -> Tuple[Optional[str], Optional[str], Optional[str]]:
+    """Return the most accurate category tuple for a product.
+
+    The classification relies primarily on the product reference (default code) and
+    falls back to existing categories when no rule matches.
+    """
+
+    if not default_code:
+        return existing_main, existing_sub, None
+
+    normalized_code = default_code.strip().upper()
+
+    for pattern, (main, sub, type_) in HIK_RULES:
+        if re.match(pattern, normalized_code):
+            return main, sub, type_
+
+    return existing_main, existing_sub, None
+
+
+def classify(
+    sku_raw: str,
+    existing_main: Optional[str] = None,
+    existing_sub: Optional[str] = None,
+):
+    """Return category path list for a given SKU or label."""
+
+    main, sub, type_ = infer_categories(sku_raw, existing_main, existing_sub)
+
+    if not main and not sub:
         return ["Non classé"]
 
-    sku = sku_raw.strip().upper()
-
-    # --- Vidéo analogique ---------------------------------
-    if sku.startswith("DS-2AE"):
-        return ["Vidéo analogique", "Caméras PTZ"]
-    if sku.startswith("DS-2CE"):
-        return ["Vidéo analogique", "Caméras fixes"]
-    if sku.startswith("DS-72") or sku.startswith("DS-71"):
-        return ["Vidéo analogique", "DVR"]
-
-    # --- Vidéo IP -----------------------------------------
-    if sku.startswith("DS-2DF") or sku.startswith("DS-2DE"):
-        return ["Vidéo IP", "Caméras PTZ"]
-    if sku.startswith("DS-2CD"):
-        return ["Vidéo IP", "Caméras fixes"]
-    if re.match(r"^DS-7[6-8]", sku):
-        return ["Vidéo IP", "NVR"]
-    if sku.startswith("DS-3E"):
-        return ["Vidéo IP", "Switches PoE"]
-    if sku.startswith("DS-A"):
-        return ["Vidéo IP", "Stockage IP SAN/NAS"]
-
-    # --- Hybride ------------------------------------------
-    if sku.startswith("DS-90"):
-        return ["Hybride/HCVR", "DVR Hybride"]
-
-    # --- Contrôle d'accès & Interphonie -------------------
-    if sku.startswith("DS-KD"):
-        return ["Contrôle d’accès & Interphonie", "Interphonie vidéo", "Door station"]
-    if sku.startswith("DS-KH"):
-        return ["Contrôle d’accès & Interphonie", "Interphonie vidéo", "Indoor station"]
-    if sku.startswith("DS-K1") or sku.startswith("DS-K2"):
-        return ["Contrôle d’accès & Interphonie", "Contrôleurs & lecteurs"]
-
-    # --- Alarme intrusion ---------------------------------
-    if sku.startswith("DS-PWA") or sku.startswith("DS-PMA"):
-        return ["Alarme intrusion", "Centrales"]
-    if sku.startswith("DS-PD") or sku.startswith("DS-PS") or sku.startswith("DS-PT") or sku.startswith("DS-PDE"):
-        return ["Alarme intrusion", "Détecteurs / contacts / sirènes"]
-    if sku.startswith("DS-PK") or sku.startswith("DS-PR") or sku.startswith("DS-PF"):
-        return ["Alarme intrusion", "Périphériques"]
-
-    # --- Affichage ----------------------------------------
-    if sku.startswith("DS-D5") or sku.startswith("DS-D6"):
-        return ["Affichage & mur d’images", "Moniteurs"]
-    if sku.startswith("DS-C1") or sku.startswith("DS-VD"):
-        return ["Affichage & mur d’images", "Décoders / contrôleurs"]
-
-    # --- Spécialisations diverses -------------------------
-    if sku.startswith("DS-M"):
-        return ["Autres spécialisations", "Mobile / Bodycam"]
-    if sku.startswith("DS-T"):
-        return ["Autres spécialisations", "Traffic / radar"]
-    if sku.startswith("DS-2TD") or sku.startswith("DS-2TE"):
-        return ["Autres spécialisations", "Thermique"]
-
-    # --- Accessoires génériques (mots-clés) ---------------
-    if contains_any(sku, ["BALUN", "BNC", "DC", "BRACKET", "MOUNT", "POE", "RJ45"]):
-        return ["Accessoires généraux", "Câbles & connectique"]
-    if contains_any(sku, ["HDD", "SSD"]):
-        return ["Accessoires généraux", "Disques durs"]
-    if sku.startswith("DS-12") or sku.startswith("DS-127") or sku.startswith("DS-129"):
-        return ["Accessoires généraux", "Supports & boîtiers"]
-
-    # --- Par défaut ---------------------------------------
-    return ["Non classé"]
+    return [main, sub, type_]
