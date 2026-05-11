@@ -6,10 +6,21 @@ from .models import BlogPost, BlogAttachment
 
 def serialize_blog(blog, request=None):
     def build_url(field):
-        if not field:
+        try:
+            if not field:
+                return None
+            url = field.url
+            return request.build_absolute_uri(url) if request else url
+        except Exception:
             return None
-        url = field.url
-        return request.build_absolute_uri(url) if request else url
+
+    try:
+        attachments = [
+            request.build_absolute_uri(att.file.url) if request else att.file.url
+            for att in blog.attachments.all()
+        ]
+    except Exception:
+        attachments = []
 
     return {
         'id': blog.pk,
@@ -20,12 +31,9 @@ def serialize_blog(blog, request=None):
         'published_date': blog.published_date.isoformat() if blog.published_date else None,
         'category': blog.category,
         'language': blog.language,
-        'attachments': [
-            request.build_absolute_uri(att.file.url) if request else att.file.url
-            for att in blog.attachments.all()
-        ],
-        'created_at': blog.created_at.isoformat(),
-        'updated_at': blog.updated_at.isoformat(),
+        'attachments': attachments,
+        'created_at': blog.created_at.isoformat() if blog.created_at else None,
+        'updated_at': blog.updated_at.isoformat() if blog.updated_at else None,
     }
 
 
