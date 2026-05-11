@@ -27,14 +27,23 @@ SECRET_KEY = 'django-insecure-i!k3jzi@6*&luy^b_izz)ap-)@9c&k&wly-k-t7i!zl#!26c39
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["labelshop-backend.onrender.com", "127.0.0.1", "localhost", "https://labelshop-frontend.vercel.app", ]
+ALLOWED_HOSTS = [
+    "labelshop-backend.onrender.com",
+    "lr-samr.pythonanywhere.com",
+    "127.0.0.1",
+    "localhost",
+    "labelretail.ci",
+    "www.labelretail.ci",
+]
 CSRF_TRUSTED_ORIGINS = [
-    "https://labelshop-frontend.vercel.app",  # URL du frontend React sur Render
+    "https://labelshop-frontend.vercel.app",
+    "https://secunologi-webs.vercel.app",
     "http://localhost:3000",
-    "https://www.labelretail.ci",# Pour le développement local
-    "http://www.labelretail.ci",# Pour le développement local
-    "http://labelretail.ci",# Pour le développement local
-    "https://labelretail.ci",# Pour le développement local
+    "https://www.labelretail.ci",
+    "http://www.labelretail.ci",
+    "http://labelretail.ci",
+    "https://labelretail.ci",
+    "https://lr-samr.pythonanywhere.com",
 ]
 
 
@@ -154,10 +163,15 @@ CACHES = {
 }
 
 CORS_ALLOWED_ORIGINS = [
-    "https://labelshop-frontend.vercel.app",  # URL du frontend React sur Render
+    "https://labelshop-frontend.vercel.app",
+    "https://secunologi-webs.vercel.app",
     "http://localhost:3000",
-    "https://www.labelretail.ci",# Pour le développement local
-    "http://www.labelretail.ci",# Pour le développement local
-    "http://labelretail.ci",# Pour le développement local
-    "https://labelretail.ci",# Pour le développement local
+    "https://www.labelretail.ci",
+    "http://www.labelretail.ci",
+    "http://labelretail.ci",
+    "https://labelretail.ci",
+    "https://lr-samr.pythonanywhere.com",
 ]
+
+# Autorise également toutes les origines pour les endpoints blogs (lecture publique)
+CORS_URLS_REGEX = r'^/.*$'

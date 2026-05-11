@@ -1,98 +1,160 @@
 import json
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth.decorators import login_required
-from django.forms.models import model_to_dict
 from .models import BlogPost, BlogAttachment
 
 
 def serialize_blog(blog, request=None):
-    data = model_to_dict(blog, fields=['id', 'title', 'content', 'author_name', 'created_at', 'updated_at'])
-    data['author_image'] = request.build_absolute_uri(blog.author_image.url) if blog.author_image else None
-    data['attachments'] = [
-        request.build_absolute_uri(att.file.url) if request else att.file.url
-        for att in blog.attachments.all()
-    ]
-    return data
+    def build_url(field):
+        if not field:
+            return None
+        url = field.url
+        return request.build_absolute_uri(url) if request else url
+
+    return {
+        'id': blog.pk,
+        'title': blog.title,
+        'content': blog.content,
+        'author_name': blog.author_name,
+        'author_image': build_url(blog.author_image),
+        'published_date': blog.published_date.isoformat() if blog.published_date else None,
+        'category': blog.category,
+        'language': blog.language,
+        'attachments': [
+            request.build_absolute_uri(att.file.url) if request else att.file.url
+            for att in blog.attachments.all()
+        ],
+        'created_at': blog.created_at.isoformat(),
+        'updated_at': blog.updated_at.isoformat(),
+    }
+
+
+def _cors(response):
+    response['Access-Control-Allow-Origin'] = '*'
+    response['Access-Control-Allow-Methods'] = 'GET, POST, PATCH, PUT, DELETE, OPTIONS'
+    response['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
+    return response
 
 
 def list_blogs(request):
+    if request.method == 'OPTIONS':
+        return _cors(JsonResponse({}, status=200))
     blogs = BlogPost.objects.prefetch_related('attachments').all()
-    result = [serialize_blog(blog, request) for blog in blogs]
-    return JsonResponse(result, safe=False)
+    return _cors(JsonResponse([serialize_blog(b, request) for b in blogs], safe=False))
 
 
 def blog_detail(request, blog_id):
+    if request.method == 'OPTIONS':
+        return _cors(JsonResponse({}, status=200))
     try:
         blog = BlogPost.objects.prefetch_related('attachments').get(id=blog_id)
     except BlogPost.DoesNotExist:
-        return JsonResponse({'error': 'Blog not found'}, status=404)
-    return JsonResponse(serialize_blog(blog, request))
+        return _cors(JsonResponse({'error': 'Blog not found'}, status=404))
+    return _cors(JsonResponse(serialize_blog(blog, request)))
 
 
 @csrf_exempt
-@login_required
 def create_blog(request):
+    if request.method == 'OPTIONS':
+        return _cors(JsonResponse({}, status=200))
     if request.method != 'POST':
-        return JsonResponse({'error': 'Method not allowed'}, status=405)
-    title = request.POST.get('title')
-    content = request.POST.get('content')
-    author_name = request.POST.get('author_name')
+        return _cors(JsonResponse({'error': 'Method not allowed'}, status=405))
+
+    # Accepte JSON ou multipart form
+    content_type = request.content_type or ''
+    if 'application/json' in content_type:
+        try:
+            body = json.loads(request.body)
+        except (json.JSONDecodeError, Exception):
+            return _cors(JsonResponse({'error': 'JSON invalide'}, status=400))
+        title        = body.get('title', '').strip()
+        content      = body.get('content', '').strip()
+        author_name  = body.get('author_name', '').strip()
+        published_date = body.get('published_date') or None
+        category     = body.get('category', '')
+        language     = body.get('language', '')
+        author_image = None
+    else:
+        title        = request.POST.get('title', '').strip()
+        content      = request.POST.get('content', '').strip()
+        author_name  = request.POST.get('author_name', '').strip()
+        published_date = request.POST.get('published_date') or None
+        category     = request.POST.get('category', '')
+        language     = request.POST.get('language', '')
+        author_image = request.FILES.get('author_image')
 
     if not title or not content or not author_name:
-        return JsonResponse({'error': 'Missing required fields'}, status=400)
+        return _cors(JsonResponse({'error': 'Missing required fields: title, content, author_name'}, status=400))
 
     blog = BlogPost.objects.create(
         title=title,
         content=content,
         author_name=author_name,
-        author_image=request.FILES.get('author_image'),
+        author_image=author_image,
+        published_date=published_date,
+        category=category,
+        language=language,
     )
 
-    for file in request.FILES.getlist('attachments'):
-        BlogAttachment.objects.create(blog=blog, file=file)
+    if not ('application/json' in content_type):
+        for file in request.FILES.getlist('attachments'):
+            BlogAttachment.objects.create(blog=blog, file=file)
 
-    return JsonResponse(serialize_blog(blog, request), status=201)
+    return _cors(JsonResponse(serialize_blog(blog, request), status=201))
 
 
 @csrf_exempt
-@login_required
 def update_blog(request, blog_id):
-    if request.method != 'POST':
-        return JsonResponse({'error': 'Method not allowed'}, status=405)
+    if request.method == 'OPTIONS':
+        return _cors(JsonResponse({}, status=200))
+    if request.method not in ('POST', 'PATCH', 'PUT'):
+        return _cors(JsonResponse({'error': 'Method not allowed'}, status=405))
+
     try:
         blog = BlogPost.objects.get(id=blog_id)
     except BlogPost.DoesNotExist:
-        return JsonResponse({'error': 'Blog not found'}, status=404)
+        return _cors(JsonResponse({'error': 'Blog not found'}, status=404))
 
-    title = request.POST.get('title')
-    content = request.POST.get('content')
-    author_name = request.POST.get('author_name')
+    content_type = request.content_type or ''
+    if 'application/json' in content_type:
+        try:
+            body = json.loads(request.body)
+        except (json.JSONDecodeError, Exception):
+            return _cors(JsonResponse({'error': 'JSON invalide'}, status=400))
+        for field in ('title', 'content', 'author_name', 'published_date', 'category', 'language'):
+            if field in body:
+                val = body[field]
+                if field == 'published_date' and val == '':
+                    val = None
+                setattr(blog, field, val)
+    else:
+        for field in ('title', 'content', 'author_name', 'category', 'language'):
+            val = request.POST.get(field)
+            if val is not None:
+                setattr(blog, field, val)
+        pd = request.POST.get('published_date')
+        if pd is not None:
+            blog.published_date = pd or None
+        if 'author_image' in request.FILES:
+            blog.author_image = request.FILES['author_image']
+        for file in request.FILES.getlist('attachments'):
+            BlogAttachment.objects.create(blog=blog, file=file)
 
-    if title:
-        blog.title = title
-    if content:
-        blog.content = content
-    if author_name:
-        blog.author_name = author_name
-    if 'author_image' in request.FILES:
-        blog.author_image = request.FILES['author_image']
     blog.save()
-
-    for file in request.FILES.getlist('attachments'):
-        BlogAttachment.objects.create(blog=blog, file=file)
-
-    return JsonResponse(serialize_blog(blog, request))
+    return _cors(JsonResponse(serialize_blog(blog, request)))
 
 
 @csrf_exempt
-@login_required
 def delete_blog(request, blog_id):
+    if request.method == 'OPTIONS':
+        return _cors(JsonResponse({}, status=200))
     if request.method != 'DELETE':
-        return JsonResponse({'error': 'Method not allowed'}, status=405)
+        return _cors(JsonResponse({'error': 'Method not allowed'}, status=405))
+
     try:
         blog = BlogPost.objects.get(id=blog_id)
     except BlogPost.DoesNotExist:
-        return JsonResponse({'error': 'Blog not found'}, status=404)
+        return _cors(JsonResponse({'error': 'Blog not found'}, status=404))
+
     blog.delete()
-    return JsonResponse({'message': 'Blog deleted'})
+    return _cors(JsonResponse({'message': 'Blog deleted'}, status=200))
