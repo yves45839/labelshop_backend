@@ -1,1 +1,2 @@
+# Ensure the DJANGO_SECRET_KEY environment variable is set for production
 web: gunicorn labelshop_backend.wsgi:application --bind 0.0.0.0:$PORT
